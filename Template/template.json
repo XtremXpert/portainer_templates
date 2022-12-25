@@ -2001,6 +2001,52 @@
       ]
     },
     {
+      "categories": ["Cloud", "Productivity", "Tools", "Other", "Web"],
+      "description": "Odoo is an OpenSource development framework for business application using On Demand Open Object.",
+      "env": [
+        {
+          "default": "15.0",
+          "name": "ODOO_VERSION",
+          "label": "Odoo Version to install"
+        },
+        {
+          "default": "14",
+          "name": "PG_VERSION",
+          "label": "Postgres Version to install"
+        },
+        {
+          "default": "odoo",
+          "name": "ODOO_USER",
+          "label": "DB Username"
+        },
+        {
+          "default": "AGoodPassWordSt0ng!",
+          "label": "DB Password",
+          "name": "ODOO_PASS"
+        },
+        {
+          "default": "11172",
+          "label": "Livechat Port",
+          "name": "ODOO_CHAT_PORT"
+        },
+        {
+          "default": "11169",
+          "label": "HTTP Port",
+          "name": "ODOO_HTTP_PORT"
+        }
+      ],
+      "logo": "https://raw.githubusercontent.com/XtremXpert/portainer_templates/master/Images/odoo-icon.png",
+      "name": "odoo",
+      "note": "The database user is odoo and the database will be create at first rune. The host of the database will be located at the bottom of the DB conotainer in portainer.",
+      "platform": "linux",
+      "repository": {
+        "stackfile": "Template/Stack/odoo.yml",
+        "url": "https://github.com/XtremXpert/portainer_templates"
+      },
+      "title": "Odoo",
+      "type": 3
+    },
+    {
       "categories": ["Other"],
       "description": "OScam is a softcam, software to be used to decrypt digital television channels on a settopbox (receiver), as an alternative for a conditional access module (CAM). The main features of OSCam are next to its softcam capabilities, that it is able to function as a cardserver.",
       "env": [

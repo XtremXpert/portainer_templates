@@ -1,0 +1,43 @@
+version: "3"
+services:
+  odoo:
+    image: odoo:${ODOO_VERSION}
+    ports:
+      - ${ODOO_HTTP_PORT}:8069
+      - ${ODOO_CHAT_PORT}:8072
+    depends_on:
+      - db
+    restart: unless-stopped
+    networks:
+      - internal
+    environment:
+      - HOST=db
+      - USER=${ODOO_USER}
+      - PASSWORD=${ODOO_PASS}
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - odoo-web-config:/etc/odoo
+      - odoo-web-addons:/mnt/extra-addons
+      - odoo-web-log:/var/log/odoo
+  db:
+    image: postgres:${PG_VERSION}
+    restart: unless-stopped
+    networks:
+      - internal
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=${ODOO_USER}
+      - POSTGRES_PASSWORD=${ODOO_PASS}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+
+volumes:
+  odoo-data:
+  odoo-config:
+  odoo-log:
+  odoo-addons:
+  db-data:
+
+networks:
+  internal:
