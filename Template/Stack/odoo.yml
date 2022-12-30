@@ -34,10 +34,30 @@ services:
 
 volumes:
   odoo-data:
+    driver_opts:
+      type: none
+      device: ${DATADIR}/data
+      o: bind
   odoo-config:
+    driver_opts:
+      type: none
+      device: ${DATADIR}/config
+      o: bind
   odoo-log:
+    driver_opts:
+      type: none
+      device: ${DATADIR}/logs
+      o: bind
   odoo-addons:
+    driver_opts:
+      type: none
+      device: ${DATADIR}/addons
+      o: bind
   db-data:
+    driver_opts:
+      type: none
+      device: ${DATADIR}/pgdata
+      o: bind
 
 networks:
   internal:
