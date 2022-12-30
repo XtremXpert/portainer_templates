@@ -2025,15 +2025,20 @@
           "name": "ODOO_PASS"
         },
         {
+          "default": "11169",
+          "label": "HTTP Port",
+          "name": "ODOO_HTTP_PORT"
+        },
+        {
           "default": "11172",
           "label": "Livechat Port",
           "name": "ODOO_CHAT_PORT"
         },
         {
-          "default": "11169",
-          "label": "HTTP Port",
-          "name": "ODOO_HTTP_PORT"
-        }
+          "default": "/opt",
+          "label": "Volume Directory",
+          "name": "DATADIR"
+        }        
       ],
       "logo": "https://raw.githubusercontent.com/XtremXpert/portainer_templates/master/Images/odoo-icon.png",
       "name": "odoo",
