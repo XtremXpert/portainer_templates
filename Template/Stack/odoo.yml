@@ -15,10 +15,10 @@ services:
       - USER=${ODOO_USER}
       - PASSWORD=${ODOO_PASS}
     volumes:
-      - odoo-data:/var/lib/odoo
-      - odoo-config:/etc/odoo
-      - odoo-addons:/mnt/extra-addons
-      - odoo-log:/var/log/odoo
+      - ${DATADIR}/data:/var/lib/odoo
+      - ${DATADIR}/config:/etc/odoo
+      - ${DATADIR}/addons:/mnt/extra-addons
+      - ${DATADIR}/logs:/var/log/odoo
   db:
     image: postgres:${PG_VERSION}
     restart: unless-stopped
@@ -30,34 +30,4 @@ services:
       - POSTGRES_PASSWORD=${ODOO_PASS}
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - db-data:/var/lib/postgresql/data/pgdata
-
-volumes:
-  odoo-data:
-    driver_opts:
-      type: none
-      device: ${DATADIR}/data
-      o: bind
-  odoo-config:
-    driver_opts:
-      type: none
-      device: ${DATADIR}/config
-      o: bind
-  odoo-log:
-    driver_opts:
-      type: none
-      device: ${DATADIR}/logs
-      o: bind
-  odoo-addons:
-    driver_opts:
-      type: none
-      device: ${DATADIR}/addons
-      o: bind
-  db-data:
-    driver_opts:
-      type: none
-      device: ${DATADIR}/pgdata
-      o: bind
-
-networks:
-  internal:
+      - ${DATADIR}/pgdata:/var/lib/postgresql/data/pgdata
