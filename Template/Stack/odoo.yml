@@ -8,8 +8,6 @@ services:
     depends_on:
       - db
     restart: unless-stopped
-    networks:
-      - internal
     environment:
       - HOST=db
       - USER=${ODOO_USER}
@@ -22,8 +20,6 @@ services:
   db:
     image: postgres:${PG_VERSION}
     restart: unless-stopped
-    networks:
-      - internal
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=${ODOO_USER}
